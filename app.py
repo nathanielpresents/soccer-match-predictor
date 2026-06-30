@@ -44,6 +44,43 @@ DRAW_WARNING_THRESHOLD = 0.32  # draw probability that triggers ET/penalties not
 # --------------------------------------------------------------------------
 # Session state initialization
 # --------------------------------------------------------------------------
+def read_team_csv_robust(uploaded_file) -> pd.DataFrame:
+    """
+    Read a team-ratings CSV robustly, handling common real-world issues:
+    - Excel saving with semicolons instead of commas (locale-dependent)
+    - UTF-8 BOM characters from Excel/Windows
+    - Extra whitespace around column names or values
+    - Tab-delimited files
+    """
+    raw_bytes = uploaded_file.getvalue()
+
+    # Decode handling potential BOM
+    try:
+        text = raw_bytes.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        text = raw_bytes.decode("latin-1")
+
+    # Try comma first, then semicolon, then tab
+    for sep in [",", ";", "\t"]:
+        try:
+            df = pd.read_csv(io.StringIO(text), sep=sep, engine="python")
+            df.columns = [str(c).strip() for c in df.columns]
+            normalized = {c.lower() for c in df.columns}
+            if {"team", "attack", "defense"}.issubset(normalized):
+                # Strip whitespace from string cells
+                for col in df.columns:
+                    if df[col].dtype == object:
+                        df[col] = df[col].astype(str).str.strip()
+                return df
+        except Exception:
+            continue
+
+    # Fall back to pandas' own delimiter sniffer
+    df = pd.read_csv(io.StringIO(text), sep=None, engine="python")
+    df.columns = [str(c).strip() for c in df.columns]
+    return df
+
+
 def init_session_state():
     """Set up persistent state: team roster and last-used ratings."""
     if "teams" not in st.session_state:
@@ -285,18 +322,27 @@ def render_sidebar():
         uploaded_file = st.file_uploader("Upload CSV", type=["csv"], key="csv_uploader")
         if uploaded_file is not None:
             try:
-                df = pd.read_csv(uploaded_file)
+                df = read_team_csv_robust(uploaded_file)
                 required_cols = {"team", "attack", "defense"}
-                if not required_cols.issubset(set(df.columns.str.lower())):
-                    st.sidebar.error("CSV must contain: team, attack, defense columns.")
+                normalized_cols = {c.strip().lower() for c in df.columns}
+                if not required_cols.issubset(normalized_cols):
+                    st.sidebar.error(
+                        "CSV must contain: team, attack, defense columns. "
+                        f"Found columns: {list(df.columns)}"
+                    )
                 else:
-                    df.columns = [c.lower() for c in df.columns]
+                    df.columns = [c.strip().lower() for c in df.columns]
+                    loaded = 0
                     for _, row in df.iterrows():
-                        st.session_state.teams[str(row["team"])] = {
+                        team_name = str(row["team"]).strip()
+                        if not team_name or team_name.lower() == "nan":
+                            continue
+                        st.session_state.teams[team_name] = {
                             "attack": float(row["attack"]),
                             "defense": float(row["defense"]),
                         }
-                    st.sidebar.success(f"Loaded {len(df)} teams from CSV!")
+                        loaded += 1
+                    st.sidebar.success(f"Loaded {loaded} teams from CSV!")
             except Exception as e:
                 st.sidebar.error(f"Error reading CSV: {e}")
 

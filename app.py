@@ -526,10 +526,7 @@ def render_live_dashboard():
         })
 
         st.markdown("### 📊 Derived Team Ratings")
-        st.dataframe(
-            df.style.background_gradient(subset=["Attack Rating", "Defense Rating"], cmap="RdYlGn"),
-            use_container_width=True,
-        )
+        st.dataframe(df, use_container_width=True)
 
         # Top 5 attack vs defense chart
         top_df = df.head(10).reset_index()

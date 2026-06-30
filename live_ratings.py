@@ -1,1 +1,223 @@
-<!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="content-security-policy" content="default-src &#39;none&#39;; script-src &#39;nonce-wR6xozXCENFQMyYkyV7P7F&#39; &#39;unsafe-eval&#39; https://challenges.cloudflare.com; script-src-attr &#39;none&#39;; style-src &#39;unsafe-inline&#39;; img-src &#39;self&#39; https://challenges.cloudflare.com; connect-src &#39;self&#39; https://challenges.cloudflare.com; frame-src &#39;self&#39; https://challenges.cloudflare.com blob:; child-src &#39;self&#39; https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri &#39;self&#39;"><style>*{box-sizing:border-box;margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%;color:#313131;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}body{display:flex;flex-direction:column;height:100vh;min-height:100vh}.main-content{margin:8rem auto;padding-left:1.5rem;max-width:60rem}@media (width <= 720px){.main-content{margin-top:4rem}}#challenge-error-text{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0IyMEYwMyIgZD0iTTE2IDNhMTMgMTMgMCAxIDAgMTMgMTNBMTMuMDE1IDEzLjAxNSAwIDAgMCAxNiAzbTAgMjRhMTEgMTEgMCAxIDEgMTEtMTEgMTEuMDEgMTEuMDEgMCAwIDEtMTEgMTEiLz48cGF0aCBmaWxsPSIjQjIwRjAzIiBkPSJNMTcuMDM4IDE4LjYxNUgxNC44N0wxNC41NjMgOS41aDIuNzgzem0tMS4wODQgMS40MjdxLjY2IDAgMS4wNTcuMzg4LjQwNy4zODkuNDA3Ljk5NCAwIC41OTYtLjQwNy45ODQtLjM5Ny4zOS0xLjA1Ny4zODktLjY1IDAtMS4wNTYtLjM4OS0uMzk4LS4zODktLjM5OC0uOTg0IDAtLjU5Ny4zOTgtLjk4NS40MDYtLjM5NyAxLjA1Ni0uMzk3Ii8+PC9zdmc+");background-repeat:no-repeat;background-size:contain;padding-left:34px}</style><meta http-equiv="refresh" content="360"></head><body><div class="main-wrapper" role="main"><div class="main-content"><noscript><div class="h2"><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></noscript></div></div><script nonce="wR6xozXCENFQMyYkyV7P7F">(function(){window._cf_chl_opt = {cFPWv: 'g',cH: '74AkC44bMw1CSlMwufDssfFXPSDgu.Gu6irfVK_QI9A-1782851173-1.2.1.1-27YV9ZszajhPOHGIgm4BRxMfQ8qImyKZszgEyoByWcHbS4SWF_XQZybpHt85SFCN',cITimeS: '1782851173',cN: 'wR6xozXCENFQMyYkyV7P7F',cRay: 'a13fe79d3d17aea6',cTplB: '0',cTplC:0,cTplO:0,cTplV:5,cType: 'managed',cUPMDTk:"/api/organizations/0cd24499-e7bc-409f-ab4a-f6b42e6a91f9/conversations/512b35a7-673d-4a0a-9509-144fe441a3ad/wiggle/download-file?path=%2Fmnt%2Fuser-data%2Foutputs%2Fsoccer-match-predictor%2Flive_ratings.py\u0026__cf_chl_tk=2170p2Oud17XLiFHjfqzeKxhDXfiH7fhBopWTrkcxs8-1782851173-1.0.1.1-WO9vjxxy5MKSAzVtnwA453XVlPSgkDfEI10Xxar9Z3s",cvId: '3',cZone: 'claude.ai',fa:"/api/organizations/0cd24499-e7bc-409f-ab4a-f6b42e6a91f9/conversations/512b35a7-673d-4a0a-9509-144fe441a3ad/wiggle/download-file?path=%2Fmnt%2Fuser-data%2Foutputs%2Fsoccer-match-predictor%2Flive_ratings.py\u0026__cf_chl_f_tk=2170p2Oud17XLiFHjfqzeKxhDXfiH7fhBopWTrkcxs8-1782851173-1.0.1.1-WO9vjxxy5MKSAzVtnwA453XVlPSgkDfEI10Xxar9Z3s",md: 'NWRO0XN5T5HHk34nnapb_YSH9Q7TZo2iAxCgFsIBT2A-1782851173-1.2.1.1-V39lZMf21X4trIdd2x72c27B378YtnJghRHTTa8s6BGm.wuCyC7rbcDE4ffJvbYddACRrRgHeie0m913Fzjj6Uu5ErsfOUb9mR7GQ82eWFLns4WlBSriM9yk0iFB3FXV_oBCVamGSQTF2YSxaClLj2yY_w5aGTJ8IX1ANqO1jNmJ3H5VwrnA7lsZDpK4..2Uu80DPNGlAopgiZ34WjS.umUYM1opScrbEw9feYw.kKqUsKl2eNk8AwSrwXlr4Ob7gPeehJ1iptX_f5vRkn3Oa0tJNiN03pkjtP4xSDBp7fQOJMbxicdw.WbsAbHu6_K8nnojp2a0Md8DEDfXOWfxuqaALS4XMYO2mCEzx_2fAujkdMcdRY_dEZmZ867PuPXyqyaIO.NN4LlV26ljcB.NsEcSHWUEggEUfwKcW7tqS6wd2Nv3gSOm05n.OlONnCY9ARCw6mT9URbUs9UYUCkIEtt4XASrZwpmpTkADK9bTo1iLsLtW._cJVSXd0pHzaqkekS2hzoK862RJRUydw8B.UvVXS0w2HIddVek7hRHk9EC5LDDJJRdNiFn9rTg_jPfHChLt2B2m8.6Bnl.EhPYFPpUTlSL9lC4mnKd18EkTUlbuGOCTtPtH955xTEVxxI7cOaRhwLRh.gJJuKJ86Qr3EOUiK_EUMPVkzNhTBvpUGfNTHxRHKboFIySOoIicLo83S_ZjmIWQOQZcQBXzfbR.CdVxjb42ooBjF_1rnTD.7tIMFU.MN41ilw4dTj1HEcLhVf5FiuQrS4yZKBG7McR8pqJzlxynibhluq7ck.wi9iXQDyCTkqIctZpwo03LFhxdAUTWG_1hEo.3PYqqwxUUG5rGgszLPVq3mY7AvvYfHKJ6DnXREx1uO_SgWff14uPN_EcwbVX3Ip7eXClb_KSJy0Jprsb6F8AX6OjF.kIQqZSEeiSZxpb2iG.E3wi0WZhg6ocoaZlm.KVZaoA7_2tRsK6AFdxXfZRLO5dex8j5SLqWtuN9IDANlILiOcdGMYW.CY932Wn65Lw6vy94BQoARlP4IMtUKv1WSbzotQ.pLVxOZDNFXvAc6c8E9zNJLDa6BhmyC_JvJiLEV_uKixBuf7E3Juh1gac3Tl41DrulOgkTCPzMIwFnSOm2_yHmhE4PlbRhLNdlM7RQ_YbvNahJ4LkrgVrB8jT8DZMyZLWAo98Iet.x1qbHnfrYFCMAVhV2RfccQhuSh8mjpckSYsmMTTVKhBcpo.7FsjRKqmVN4HSFobTUcUJCja0f0eq00PomFl69qw8nrtDpLUxakp8EsClkIcZt9ofUy7nZ4Nt18tr3gsuNjgR.HLlu5EmN7jkBlFFZVWkLLHc6h7tFO6b2hmoQPXn.0Hi6sMnIdc5SmV2LR576O1bzLyXacVWFyeTJiMVe4.NXo.RumyTJle_HS.CF5dV9WuolLV62eXJVjuqZ_2PZAIh1oIb7eoTd4OH1wJHfsBUnAgedd.xAEzhkHdzb9Y6V9gqjhWcSTQ7UIt3uAIcRtiSJfW1WQwLEA3r',mdrd: 'kmssJWlZqOQh55lnyUuHOtjInUOdKu3knVdPV1Rfijo-1782851173-1.2.1.1-b86DtkB9v4t_RlNg5YyIx0BBatXMDmO1WfO03XE_ycGfILkW_LyUpjSsAcBS6iSsFERUIhfpE5evS0kRkEaReh7tIEBac7bkpE3mHiDWSGDxnKjy7X1Urbo7Lt73vX8a4U9Q5nUvBFgIjtC1MnbeRn9nf1WbxuBmx3jPBQM_A_PqYpZTuNlbUnd220mMhA82stSnpieZBrFFZ3mrf_DnflxCe49lTOTmuJWyKQU8X5AK2jvLXgL.oNVtjCQAXI_7PbRqOzf4uXwkDZNn7_nzO_mW.nAbYMTknOFpUKeah__UlgXy1dvpwhPTFkH9hZ_VqWTThOP_TG2uqH_f_33lzJX03BAv9tMHkABxxMby6KT3nBiCRUDRS3HggGyzBDRul4qOMN0flRIilelRRjOxXb5l2KM1so7r1i5uB4HWRP6WPpeSQDg0QhhzXufizwSfFSAmQIEvKFpOg2C_nHLq5Nzqw4ZmWFIfHletdgEE28GrDlCDnT3YvbARiqNcGA7A.BfUXqtdy3_3G_Z4pJDuTBqo00hieNa4TrBTxcfh9YiOdwu_2lg86V9qObsrpUxuI_KLIXDJgix_0zCddcN9Vzeb9WmAiw.pyIPyYHlPCbv341Vt9fW22vTDcqqA6WwBMugTTVasvGt4Wy34idjqXz.cqsxckTz5QxGV6YQlCSaQ8RY.3tkgCvjBm11dFJbIxthSWkyTwBIfZruIHD5ww0e8iYTWQ.EiyiCqDS5mmxWzYAhrrZxyMvvE6Zspk_NYD_iz4BiaNthVSSe7gt9Z2WMjyL..sEPf_5Q9J4UtFFjtNfCQXhpWkLynOd2HJmjUek74NcaTjjwyW42aBxmn4RURr8QeZQ20yOrkjYL34KuJd.F8Hii9H0TKM_InmSHvHVfaFDXVQgMxkSUvErnDlg',};var a = document.createElement('script');a.nonce = 'wR6xozXCENFQMyYkyV7P7F';a.src = '/cdn-cgi/challenge-platform/h/g/orchestrate/chl_page/v1?ray=a13fe79d3d17aea6';window._cf_chl_opt.cOgUHash = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' && location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history && window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null,"/api/organizations/0cd24499-e7bc-409f-ab4a-f6b42e6a91f9/conversations/512b35a7-673d-4a0a-9509-144fe441a3ad/wiggle/download-file?path=%2Fmnt%2Fuser-data%2Foutputs%2Fsoccer-match-predictor%2Flive_ratings.py\u0026__cf_chl_rt_tk=2170p2Oud17XLiFHjfqzeKxhDXfiH7fhBopWTrkcxs8-1782851173-1.0.1.1-WO9vjxxy5MKSAzVtnwA453XVlPSgkDfEI10Xxar9Z3s"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>
+"""
+live_ratings.py
+---------------
+Fetches recent international match results from the football-data.org
+free API and derives dynamic Attack / Defense ratings for each team.
+
+HOW IT WORKS
+------------
+1. Pull the last N completed matches from the UEFA Nations League and
+   FIFA World Cup competitions (both available on the free tier).
+2. For every team, calculate:
+       attack_score  = goals_scored_per_game  (relative to league average)
+       defense_score = goals_conceded_per_game (relative to league average)
+3. Scale both values to the 40-95 range the predictor expects.
+
+FREE API KEY
+------------
+Sign up at https://www.football-data.org/client/register
+It's instant and free. Paste your key into the Streamlit sidebar or
+set the environment variable FOOTBALL_DATA_API_KEY.
+
+RATE LIMIT
+----------
+The free tier allows 10 requests/minute. Results are cached in
+Streamlit session state for 30 minutes to avoid hitting the limit.
+"""
+
+import os
+import time
+import datetime
+import requests
+import pandas as pd
+import streamlit as st
+
+# football-data.org base URL
+BASE_URL = "https://api.football-data.org/v4"
+
+# Competition IDs available on the free tier
+COMPETITIONS = {
+    "UEFA Nations League": "UNL",
+    "FIFA World Cup":      "WC",
+    "UEFA Euro":           "EC",
+    "Copa America":        "CLI",
+}
+
+# Rating scale boundaries
+RATING_MIN = 40.0
+RATING_MAX = 95.0
+CACHE_MINUTES = 30        # how long to keep fetched data in session state
+MIN_MATCHES = 3           # minimum matches needed to include a team
+
+
+# --------------------------------------------------------------------------
+# API helpers
+# --------------------------------------------------------------------------
+def _headers(api_key: str) -> dict:
+    return {"X-Auth-Token": api_key}
+
+
+def _get(endpoint: str, api_key: str, params: dict = None) -> dict:
+    """Make a single GET request; return parsed JSON or None on error."""
+    url = f"{BASE_URL}/{endpoint}"
+    try:
+        resp = requests.get(url, headers=_headers(api_key), params=params, timeout=10)
+        if resp.status_code == 200:
+            return resp.json()
+        elif resp.status_code == 429:
+            st.warning("⏳ API rate limit hit — waiting 15 seconds and retrying…")
+            time.sleep(15)
+            resp = requests.get(url, headers=_headers(api_key), params=params, timeout=10)
+            return resp.json() if resp.status_code == 200 else None
+        else:
+            st.error(f"API error {resp.status_code}: {resp.text[:200]}")
+            return None
+    except requests.exceptions.RequestException as e:
+        st.error(f"Network error: {e}")
+        return None
+
+
+# --------------------------------------------------------------------------
+# Fetch match results
+# --------------------------------------------------------------------------
+def fetch_recent_matches(api_key: str, competition_code: str, seasons: int = 1) -> list:
+    """
+    Return a list of finished match dicts for the given competition.
+    Each dict has: home_team, away_team, home_goals, away_goals, date.
+    """
+    data = _get(f"competitions/{competition_code}/matches", api_key,
+                params={"status": "FINISHED"})
+    if not data or "matches" not in data:
+        return []
+
+    matches = []
+    for m in data["matches"]:
+        score = m.get("score", {})
+        ft = score.get("fullTime", {})
+        home_g = ft.get("home")
+        away_g = ft.get("away")
+        if home_g is None or away_g is None:
+            continue
+        matches.append({
+            "home_team":  m["homeTeam"]["name"],
+            "away_team":  m["awayTeam"]["name"],
+            "home_goals": int(home_g),
+            "away_goals": int(away_g),
+            "date":       m.get("utcDate", "")[:10],
+        })
+    return matches
+
+
+# --------------------------------------------------------------------------
+# Derive ratings from match results
+# --------------------------------------------------------------------------
+def derive_ratings_from_matches(matches: list[dict]) -> pd.DataFrame:
+    """
+    Given a list of match result dicts, compute per-team:
+        - games_played
+        - goals_scored_per_game
+        - goals_conceded_per_game
+        - attack  (scaled 40-95)
+        - defense (scaled 40-95; higher = better defense = fewer goals conceded)
+
+    Returns a DataFrame indexed by team name.
+    """
+    if not matches:
+        return pd.DataFrame()
+
+    records = {}
+
+    def _add(team, scored, conceded):
+        if team not in records:
+            records[team] = {"played": 0, "scored": 0, "conceded": 0}
+        records[team]["played"]   += 1
+        records[team]["scored"]   += scored
+        records[team]["conceded"] += conceded
+
+    for m in matches:
+        _add(m["home_team"], m["home_goals"], m["away_goals"])
+        _add(m["away_team"], m["away_goals"], m["home_goals"])
+
+    rows = []
+    for team, stats in records.items():
+        if stats["played"] < MIN_MATCHES:
+            continue
+        scored_pg   = stats["scored"]   / stats["played"]
+        conceded_pg = stats["conceded"] / stats["played"]
+        rows.append({
+            "team":            team,
+            "games_played":    stats["played"],
+            "goals_scored_pg": round(scored_pg,   2),
+            "goals_conceded_pg": round(conceded_pg, 2),
+        })
+
+    if not rows:
+        return pd.DataFrame()
+
+    df = pd.DataFrame(rows).set_index("team")
+
+    # Scale attack: more goals scored → higher attack rating
+    df["attack"] = _scale_series(df["goals_scored_pg"], RATING_MIN, RATING_MAX)
+
+    # Scale defense: FEWER goals conceded → HIGHER defense rating (invert)
+    df["defense"] = _scale_series(
+        df["goals_conceded_pg"].max() - df["goals_conceded_pg"],
+        RATING_MIN, RATING_MAX
+    )
+
+    df["attack"]  = df["attack"].round(2)
+    df["defense"] = df["defense"].round(2)
+
+    return df.sort_values("attack", ascending=False)
+
+
+def _scale_series(series: pd.Series, lo: float, hi: float) -> pd.Series:
+    """Min-max scale a pandas Series to [lo, hi]."""
+    mn, mx = series.min(), series.max()
+    if mx == mn:
+        return pd.Series([((lo + hi) / 2)] * len(series), index=series.index)
+    return lo + (series - mn) / (mx - mn) * (hi - lo)
+
+
+# --------------------------------------------------------------------------
+# Main entry point: fetch + derive, with session-state caching
+# --------------------------------------------------------------------------
+def get_live_ratings(api_key: str, competition_code: str) -> tuple:
+    """
+    Returns (ratings_df, raw_matches, status_message).
+    Results are cached in session state for CACHE_MINUTES minutes.
+    """
+    cache_key = f"live_cache_{competition_code}"
+    now = datetime.datetime.utcnow()
+
+    # Return cached result if still fresh
+    if cache_key in st.session_state:
+        cached = st.session_state[cache_key]
+        age_minutes = (now - cached["fetched_at"]).seconds / 60
+        if age_minutes < CACHE_MINUTES:
+            remaining = int(CACHE_MINUTES - age_minutes)
+            status = (
+                f"✅ Live data loaded — {cached['match_count']} matches from "
+                f"**{cached['competition']}** · "
+                f"Cache refreshes in ~{remaining} min"
+            )
+            return cached["ratings"], cached["matches"], status
+
+    # Fetch fresh data
+    matches = fetch_recent_matches(api_key, competition_code)
+    if not matches:
+        return pd.DataFrame(), [], "⚠️ No match data returned. Check your API key or competition."
+
+    ratings = derive_ratings_from_matches(matches)
+
+    comp_name = next((k for k, v in COMPETITIONS.items() if v == competition_code), competition_code)
+    st.session_state[cache_key] = {
+        "ratings":     ratings,
+        "matches":     matches,
+        "match_count": len(matches),
+        "competition": comp_name,
+        "fetched_at":  now,
+    }
+
+    status = f"✅ Fetched **{len(matches)} matches** from **{comp_name}** — ratings updated live!"
+    return ratings, matches, status

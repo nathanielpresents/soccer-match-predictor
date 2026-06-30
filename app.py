@@ -40,6 +40,42 @@ BASELINE_RATING = 75.0    # rating treated as "league average" attack/defense
 N_SIMULATIONS = 10_000     # Monte Carlo simulation count
 DRAW_WARNING_THRESHOLD = 0.32  # draw probability that triggers ET/penalties note
 
+# --------------------------------------------------------------------------
+# FIFA World Cup 2026 — built-in ratings (based on June 2026 FIFA rankings)
+# --------------------------------------------------------------------------
+FIFA_2026_RATINGS = {
+    "Argentina":   {"attack": 95.0, "defense": 88.0},
+    "Spain":       {"attack": 93.0, "defense": 84.0},
+    "France":      {"attack": 91.0, "defense": 82.0},
+    "England":     {"attack": 89.0, "defense": 83.0},
+    "Portugal":    {"attack": 87.0, "defense": 80.0},
+    "Brazil":      {"attack": 85.5, "defense": 77.0},
+    "Morocco":     {"attack": 84.0, "defense": 81.0},
+    "Netherlands": {"attack": 82.5, "defense": 76.0},
+    "Belgium":     {"attack": 81.0, "defense": 74.5},
+    "Germany":     {"attack": 79.5, "defense": 76.5},
+    "Croatia":     {"attack": 78.0, "defense": 77.0},
+    "Italy":       {"attack": 76.5, "defense": 79.5},
+    "Colombia":    {"attack": 75.0, "defense": 71.0},
+    "Mexico":      {"attack": 73.5, "defense": 70.0},
+    "Senegal":     {"attack": 72.0, "defense": 72.5},
+    "Uruguay":     {"attack": 70.5, "defense": 73.5},
+    "USA":         {"attack": 69.0, "defense": 68.5},
+    "Japan":       {"attack": 67.5, "defense": 70.5},
+    "Switzerland": {"attack": 66.0, "defense": 69.0},
+    "Iran":        {"attack": 64.5, "defense": 67.5},
+    "Denmark":     {"attack": 63.0, "defense": 68.0},
+    "Turkiye":     {"attack": 61.5, "defense": 64.0},
+    "Ecuador":     {"attack": 60.0, "defense": 65.0},
+    "Austria":     {"attack": 58.5, "defense": 63.0},
+    "South Korea": {"attack": 57.0, "defense": 61.5},
+    "Nigeria":     {"attack": 55.5, "defense": 60.0},
+    "Australia":   {"attack": 54.0, "defense": 62.0},
+    "Algeria":     {"attack": 52.5, "defense": 58.5},
+    "Egypt":       {"attack": 51.0, "defense": 60.5},
+    "Canada":      {"attack": 49.5, "defense": 55.0},
+}
+
 
 # --------------------------------------------------------------------------
 # Session state initialization
@@ -351,6 +387,28 @@ def render_sidebar():
         roster_df = pd.DataFrame.from_dict(st.session_state.teams, orient="index")
         roster_df.index.name = "team"
         st.dataframe(roster_df, use_container_width=True)
+
+    # ---- FIFA 2026 one-click loader ----
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("**🌍 FIFA World Cup 2026 Teams**")
+    st.sidebar.caption("Load all 30 World Cup 2026 teams with real-ranking-based ratings instantly — no file needed.")
+
+    if st.sidebar.button("⚡ Load FIFA 2026 Ratings Now", use_container_width=True):
+        for team, ratings in FIFA_2026_RATINGS.items():
+            st.session_state.teams[team] = ratings
+        st.sidebar.success(f"Loaded {len(FIFA_2026_RATINGS)} World Cup 2026 teams!")
+        st.rerun()
+
+    csv_bytes = "team,attack,defense\n" + "\n".join(
+        f"{t},{r['attack']},{r['defense']}" for t, r in FIFA_2026_RATINGS.items()
+    )
+    st.sidebar.download_button(
+        label="💾 Download FIFA 2026 CSV",
+        data=csv_bytes,
+        file_name="fifa_june2026_ratings.csv",
+        mime="text/csv",
+        use_container_width=True,
+    )
 
     st.sidebar.markdown("---")
     st.sidebar.markdown(

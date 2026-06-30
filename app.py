@@ -21,6 +21,7 @@ import plotly.graph_objects as go
 from scipy.stats import poisson
 
 from teams_data import DEFAULT_TEAMS
+from live_ratings import get_live_ratings, COMPETITIONS
 
 # --------------------------------------------------------------------------
 # Page configuration
@@ -457,6 +458,160 @@ def render_team_selector(label, default_team, key_prefix):
     return team, float(attack), float(defense)
 
 
+# --------------------------------------------------------------------------
+# Live Ratings Dashboard tab
+# --------------------------------------------------------------------------
+def render_live_dashboard():
+    """Full live data panel rendered inside the Live Ratings tab."""
+    st.subheader("📡 Live Ratings Dashboard")
+    st.markdown(
+        "Enter your free API key from [football-data.org](https://www.football-data.org/client/register) "
+        "to fetch real match results and auto-compute team ratings."
+    )
+
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        api_key = st.text_input(
+            "🔑 API Key",
+            type="password",
+            placeholder="Paste your football-data.org key here…",
+            key="live_api_key",
+        )
+    with col2:
+        competition = st.selectbox(
+            "Competition",
+            options=list(COMPETITIONS.keys()),
+            key="live_competition",
+        )
+
+    fetch_clicked = st.button("🔄 Fetch Live Ratings", type="primary", key="fetch_live_btn")
+
+    if fetch_clicked:
+        if not api_key.strip():
+            st.error("Please enter your API key first.")
+            return
+        comp_code = COMPETITIONS[competition]
+        with st.spinner(f"Fetching {competition} results…"):
+            ratings_df, matches, status = get_live_ratings(api_key.strip(), comp_code)
+        st.info(status)
+
+        if not ratings_df.empty:
+            # Store in session
+            st.session_state.live_ratings_df = ratings_df
+            st.session_state.live_matches    = matches
+
+            # Push into team roster automatically
+            applied = 0
+            for team, row in ratings_df.iterrows():
+                st.session_state.teams[str(team)] = {
+                    "attack":  float(row["attack"]),
+                    "defense": float(row["defense"]),
+                }
+                applied += 1
+            st.success(
+                f"✅ **{applied} teams** updated in your roster with live ratings! "
+                "Switch to the 🎯 Predict tab to use them."
+            )
+
+    # Display ratings table if available
+    if "live_ratings_df" in st.session_state and not st.session_state.live_ratings_df.empty:
+        df = st.session_state.live_ratings_df.copy()
+        df.index.name = "Team"
+        df = df.rename(columns={
+            "games_played":      "Games",
+            "goals_scored_pg":   "Goals Scored / Game",
+            "goals_conceded_pg": "Goals Conceded / Game",
+            "attack":            "Attack Rating",
+            "defense":           "Defense Rating",
+        })
+
+        st.markdown("### 📊 Derived Team Ratings")
+        st.dataframe(
+            df.style.background_gradient(subset=["Attack Rating", "Defense Rating"], cmap="RdYlGn"),
+            use_container_width=True,
+        )
+
+        # Top 5 attack vs defense chart
+        top_df = df.head(10).reset_index()
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=top_df["Team"], y=top_df["Attack Rating"],
+            name="Attack", marker_color="#FF6F00",
+        ))
+        fig.add_trace(go.Bar(
+            x=top_df["Team"], y=top_df["Defense Rating"],
+            name="Defense", marker_color="#1565C0",
+        ))
+        fig.update_layout(
+            title="Top 10 Teams — Attack vs Defense Rating (Live Data)",
+            barmode="group", template="plotly_white",
+            height=450, margin=dict(t=60, b=40),
+        )
+        st.plotly_chart(fig, use_container_width=True)
+
+    else:
+        st.info("👆 Enter your API key and click **Fetch Live Ratings** to load real data.")
+        st.markdown(
+            "**Getting a free API key takes 30 seconds:**\n"
+            "1. Go to [football-data.org/client/register](https://www.football-data.org/client/register)\n"
+            "2. Enter your email — key arrives instantly\n"
+            "3. Paste it above and click Fetch"
+        )
+
+
+def render_recent_results():
+    """Show a table and chart of raw fetched match results."""
+    st.subheader("📋 Recent Match Results")
+
+    if "live_matches" not in st.session_state or not st.session_state.live_matches:
+        st.info("Fetch live data in the 📡 Live Ratings Dashboard tab first.")
+        return
+
+    matches = st.session_state.live_matches
+    df = pd.DataFrame(matches)
+    df["total_goals"] = df["home_goals"] + df["away_goals"]
+    df["result"] = df.apply(
+        lambda r: f"{r['home_team']} {r['home_goals']}–{r['away_goals']} {r['away_team']}", axis=1
+    )
+    df["date"] = pd.to_datetime(df["date"])
+    df = df.sort_values("date", ascending=False)
+
+    # Summary stats
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Total Matches", len(df))
+    c2.metric("Avg Goals / Game", f"{df['total_goals'].mean():.2f}")
+    c3.metric("Highest Scoring", df.loc[df['total_goals'].idxmax(), 'result'])
+    draws = (df['home_goals'] == df['away_goals']).sum()
+    c4.metric("Draw Rate", f"{draws/len(df)*100:.1f}%")
+
+    # Goals per game over time
+    df_time = df.sort_values("date")
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=df_time["date"], y=df_time["total_goals"],
+        mode="lines+markers", name="Goals / Game",
+        line=dict(color="#2E7D32", width=2),
+    ))
+    fig.add_hline(
+        y=df["total_goals"].mean(), line_dash="dash",
+        line_color="gray", annotation_text="Average"
+    )
+    fig.update_layout(
+        title="Goals Per Game Over Time",
+        xaxis_title="Date", yaxis_title="Total Goals",
+        template="plotly_white", height=380,
+        margin=dict(t=60, b=40),
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    # Full results table
+    st.markdown("### All Results")
+    display_df = df[["date", "result", "total_goals"]].copy()
+    display_df["date"] = display_df["date"].dt.strftime("%Y-%m-%d")
+    display_df.columns = ["Date", "Result", "Total Goals"]
+    st.dataframe(display_df, use_container_width=True, height=400)
+
+
 def main():
     init_session_state()
     render_sidebar()
@@ -468,10 +623,24 @@ def main():
         "simulation** built on attack and defense ratings. "
         "Pick two teams, tune their ratings, and run the simulation."
     )
-    st.markdown("---")
 
-    # ---- Team selection columns ----
-    col_home, col_away = st.columns(2)
+    # ---- Tab layout ----
+    tab_predict, tab_live, tab_recent = st.tabs([
+        "🎯 Predict",
+        "📡 Live Ratings Dashboard",
+        "📋 Recent Results",
+    ])
+
+    with tab_live:
+        render_live_dashboard()
+
+    with tab_recent:
+        render_recent_results()
+
+    with tab_predict:
+        st.markdown("---")
+        # ---- Team selection columns ----
+        col_home, col_away = st.columns(2)
 
     with col_home:
         st.subheader("🏠 Home Team")
